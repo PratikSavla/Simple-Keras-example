@@ -29,3 +29,10 @@ model.fit(X, Y, epochs=1000, batch_size=200)
 scores = model.evaluate(X, Y)
 print("\n%s: %.2f%%" % (model.metrics_names[1], scores[1]*100))
 ''' 99.48% '''
+
+model_json = model.to_json()
+with open("model.json", "w") as json_file:
+    json_file.write(model_json)
+
+model.save_weights("model.h5")
+print("Saved model to disk")
